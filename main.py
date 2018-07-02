@@ -13,18 +13,17 @@ import threading
 from modules import SimpleHCServer
 
 my_port = 9001
-host = ''
-port = 50007
+host = '127.0.0.1'
+hc_port = 50007
 
 #Provide Simple Healthcheck as own thread
-#threading.Thread(target=SimpleHCServer.run(my_port)).start()
+SimpleHCServer.get_lock(host, hc_port)
+threading.Thread(target=SimpleHCServer.run(host, my_port, hc_port)).start()
 
-
+#get_lock(my_srv_adress, hc_port)
 
 def job():
     print("Still working...")
-    print(threading.active_count())
-    print(threading.enumerate())
 #    print(bck.name)
 
 #schedule.every().minutes.do(job)
@@ -37,21 +36,14 @@ def dobackup():
         schedule.run_pending()
         time.sleep(1)
 
-def get_lock(backup):
-    get_lock._lock_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+dobackup()
 
-    try:
-        get_lock._lock_socket.bind((host, port))
-        print('I got the lock')
-    except socket.error:
-        print('lock exists')
-        sys.exit()
+sleep(90)
 
-get_lock('running_test')
 
 
 #do backup
-bck = threading.Thread(target=dobackup(), name='Backup').start()
+#bck = threading.Thread(target=dobackup(), name='Backup').start()
 
 
 
