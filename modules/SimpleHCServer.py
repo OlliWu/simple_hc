@@ -1,4 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import threading
 
 class testHTTPServer_RequestHandler(BaseHTTPRequestHandler) :
 
@@ -12,9 +13,12 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler) :
         self.end_headers()
 
         # Send message back to client
-        message = "OK"
+        message = str(threading.active_count()) + str(threading.enumerate()) + str(threading.current_thread()) + str(threading.main_thread())
+        
         # Write content as utf-8 data
         self.wfile.write(bytes(message, "utf8"))
+        print(threading.active_count())
+
         return
 
 def run(my_port):

@@ -7,15 +7,10 @@ __status__ = 'Development'
 import os
 import schedule
 import time
-import threading
-from modules import SimpleHCServer
-
-#Provide Simple Healthcheck as own thread
-threading.Thread(target=SimpleHCServer.run(my_port)).start()
 
 def job():
     print("Still working...")
-
+    
 #schedule.every().minutes.do(job)
 # schedule.every().monday.at("23:37").do(job)
 # schedule.every().wednesday.at("13:15").do(job)
