@@ -11,7 +11,7 @@ import schedule
 import time
 import threading
 from modules import SimpleHCServer
-from filelock import Timeout, FileLock
+#from filelock import Timeout, FileLock
 
 
 my_port = 9001
@@ -20,14 +20,17 @@ hc_port = 50007
 
 #Provide Simple Healthcheck as own thread
 #SimpleHCServer.get_lock(host, hc_port)
-hc_server = threading.Thread(target=SimpleHCServer.run(host, my_port))
-hc_server.setDaemon(True)
-hc_server.start()
 
-sys.exit()
+SimpleHCServer.run_web(host, my_port)
 
 
-#time.sleep(10)
+# hc_server = threading.Thread(target=SimpleHCServer.run_web(host, my_port))
+# hc_server.setDaemon(True)
+# hc_server.start()
+
+
+
+time.sleep(10)
 
 
 
