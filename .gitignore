@@ -9,6 +9,7 @@ __pycache__
 .settings/
 .vscode/
 config.json
+._def
 
 # Executables
 
