@@ -11,12 +11,11 @@ import schedule
 import time
 import threading
 from modules import SimpleHCServer
-#from filelock import Timeout, FileLock
+
 
 
 my_port = 9001
 host = '127.0.0.1'
-hc_port = 50007
 
 #Provide Simple Healthcheck as own thread
 #SimpleHCServer.get_lock(host, hc_port)
@@ -34,7 +33,7 @@ time.sleep(10)
 
 
 
-#get_lock(my_srv_adress, hc_port)
+# get_lock(my_srv_adress, hc_port)
 
 # def job():
 #     print("Still working...")
