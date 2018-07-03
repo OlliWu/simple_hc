@@ -1,3 +1,9 @@
+__author__ = 'Olli'
+__version__ = '0.1.0'
+__maintainer__ = 'Olli'
+__email__ = 'olli@csow.de'
+__status__ = 'Development'
+
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
 
@@ -29,11 +35,9 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
 
 def run_web(my_srv_adress, my_port):
     print("Starting Server...")
-    print(threading.main_thread)
-    print(threading.main_thread().is_alive())
     server_address = (my_srv_adress, my_port)
-    
     httpd = HTTPServer(server_address, testHTTPServer_RequestHandler)
+    
     server_thread = threading.Thread(target=httpd.serve_forever)
     server_thread.daemon = False
     server_thread.start()
